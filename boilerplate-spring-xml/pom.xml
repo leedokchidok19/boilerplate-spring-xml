@@ -148,12 +148,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+	<!--HikariCP setting-->
 		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 				<artifactId>HikariCP</artifactId>
 				<version>2.7.4</version>
 		</dependency>
+	<!--HikariCP setting-->
 
 	<!--mybatis setting-->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
@@ -190,8 +192,23 @@
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
-
+		<!-- PreparedStatement의 값을 확인하기 위한 용도 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>
 	<!--mybatis setting-->
+
+	<!--MySQL setting-->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.16</version>
+		</dependency>
+	<!--MySQL setting-->
 
 	<!--Spring LDCD setting-->
 	</dependencies>

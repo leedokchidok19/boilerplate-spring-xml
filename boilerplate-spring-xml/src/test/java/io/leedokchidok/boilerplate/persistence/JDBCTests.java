@@ -14,7 +14,7 @@ public class JDBCTests {
 
 	static {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -23,8 +23,8 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		try (Connection con =
-				DriverManager.getConnection(
-						"jdbc:oracle:thin:@localhost:1521:XE",
+				DriverManager.getConnection(//mysql 연결
+						"jdbc:log4jdbc:mysql://127.0.0.1:3306/DB_Schema?serverTimezone=UTC&useSSL=false",
 						"ex_username",
 						"ex_password")){
 			log.info(con);
