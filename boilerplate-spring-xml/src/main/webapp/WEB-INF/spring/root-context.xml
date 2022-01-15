@@ -39,6 +39,7 @@ Namespaces에서 context 체크
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
+	<!--MyBatis가 동작할 때 Mapper를 인식할 수 있도록 설정-->
 	<mybatis-spring:scan base-package="io.leedokchidok.boilerplate.mapper" />
 
 </beans>
