@@ -1,4 +1,4 @@
-package io.leedokchidok.boilerplate;
+package io.leedokchidok.boilerplate.sample;
 
 import static org.junit.Assert.assertNotNull;
 
