@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc
-		http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring
-		http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop
-		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+						http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+						http://mybatis.org/schema/mybatis-spring
+						http://mybatis.org/schema/mybatis-spring-1.2.xsd
+						http://www.springframework.org/schema/beans
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 <!--
 Root Context: defines shared resources visible to all other web components
 src 폴더 내 스프링 프레임워크에서 관리해야 객체를 설정하는 설정 파일
@@ -23,13 +23,22 @@ Namespaces에서 context 체크
 	<context:component-scan base-package="io.leedokchidok.boilerplate">
 	</context:component-scan>
 
+	<context:property-placeholder location="classpath:config/database.properties" />
+
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${db.mysql.driverClassName}"></property>
+		<property name="jdbcUrl" value="${db.mysql.jdbcUrl}"></property>
+		<property name="username" value="${db.mysql.username}"></property>
+		<property name="password" value="${db.mysql.password}"></property>
+	</bean>
+<!--properties 사용 안 할 경우
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/DB_Schema?serverTimezone=UTC&amp;useSSL=false"></property>
 		<property name="username" value="ex_username"></property>
 		<property name="password" value="ex_password"></property>
 	</bean>
-
+-->
 	<!--HikariCP configuration-->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"/>
